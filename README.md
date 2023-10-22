@@ -22,7 +22,7 @@ Un hotel necesita un sistema computacional el cual cumpla con la función de pod
 - [Plan de trabajo](https://github.com/DarozZero/ConstruHotel/blame/main/Documentacion/PlanTrabajo.xlsx)
 - [Estandar de programación](https://github.com/DarozZero/ConstruHotel/blob/main/Documentacion/ConvencionesCodigoJava.pdf)
 
-You can find our documentation on our repository [here](https://github.com/DarozZero/Fmat-Proyect/tree/main/Documentation)
+Puedes encontrar todo la documentacion del repositorio [Aqui](https://github.com/DarozZero/Fmat-Proyect/tree/main/Documentation)
 
 ## Autores <a name = "authors"></a>
 Thank you to all our authors! 🙏
