@@ -5,7 +5,9 @@
 package View;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JPanel;
 /**
  *
  * @author BBoyp
@@ -17,14 +19,28 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
-        InitStyles();
+        initStyles();
+        initContent();
     }
     
-    private void InitStyles(){
+    private void initStyles(){
         hotelName.putClientProperty( "FlatLaf.styleClass", "h00" );
         hotelName.setForeground(Color.white);
-        contactInformationTitle.putClientProperty( "FlatLaf.style", "font: bold $h2.regular.font" );
+        //contactInformationTitle.putClientProperty( "FlatLaf.style", "font: bold $h2.regular.font" );
         contactInformationTitle.setForeground(Color.white);
+    }
+    
+    private void initContent(){
+        showPanel(new PrincipalPanel());
+    }
+    private void showPanel(JPanel panel){
+        panel.setSize(485, 567);
+        panel.setLocation(0, 0);
+        
+        contentPanel.removeAll();
+        contentPanel.add(panel,BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
     }
 
     /**
@@ -45,50 +61,56 @@ public class MainMenu extends javax.swing.JFrame {
         contactInformationTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        adminButton = new javax.swing.JButton();
+        LoginButtton = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 650));
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 500));
+        setSize(new java.awt.Dimension(800, 650));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
 
         header.setBackground(new java.awt.Color(51, 153, 255));
 
-        hotelName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hotelName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         hotelName.setText("Nombre del Hotel!!!");
         hotelName.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        hotelName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hotelName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hotelNameMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         buttonsPanel.setBackground(new java.awt.Color(102, 204, 255));
         buttonsPanel.setPreferredSize(new java.awt.Dimension(312, 502));
 
         reserveButton.setBackground(new java.awt.Color(51, 153, 255));
-        reserveButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        reserveButton.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         reserveButton.setForeground(new java.awt.Color(255, 255, 255));
         reserveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pngegg.png"))); // NOI18N
-        reserveButton.setText("Reservar 👌");
+        reserveButton.setText("Reservar ");
         reserveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         reserveButton.setBorderPainted(false);
         reserveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -102,10 +124,10 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         promoButton.setBackground(new java.awt.Color(51, 153, 255));
-        promoButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        promoButton.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         promoButton.setForeground(new java.awt.Color(255, 255, 255));
         promoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giftbox.png"))); // NOI18N
-        promoButton.setText("Promociones ❤️");
+        promoButton.setText("Promociones ");
         promoButton.setToolTipText("");
         promoButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 5, 1, 1, new java.awt.Color(0, 0, 0)));
         promoButton.setBorderPainted(false);
@@ -119,39 +141,42 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        contactInformationTitle.setBackground(new java.awt.Color(255, 255, 255));
+        contactInformationTitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         contactInformationTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         contactInformationTitle.setText("Información de contacto");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea1.setRows(5);
         jTextArea1.setText("  \n       Col. Imaginaria cale X por Y y Z, New Weston\n\n                       hotelgenial@correo.com\n\n                          Tel: 999 99 99 999");
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Admin");
-        jButton1.setToolTipText("");
-        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        adminButton.setBackground(new java.awt.Color(51, 153, 255));
+        adminButton.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        adminButton.setForeground(new java.awt.Color(255, 255, 255));
+        adminButton.setText("Admin");
+        adminButton.setToolTipText("");
+        adminButton.setBorder(new javax.swing.border.MatteBorder(null));
+        adminButton.setBorderPainted(false);
+        adminButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Engrane.png"))); // NOI18N
-        jButton2.setText("Login");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        jButton2.setBorderPainted(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setIconTextGap(30);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        LoginButtton.setBackground(new java.awt.Color(51, 153, 255));
+        LoginButtton.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        LoginButtton.setForeground(new java.awt.Color(255, 255, 255));
+        LoginButtton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Engrane.png"))); // NOI18N
+        LoginButtton.setText("Login");
+        LoginButtton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        LoginButtton.setBorderPainted(false);
+        LoginButtton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LoginButtton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LoginButtton.setIconTextGap(30);
+        LoginButtton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                LoginButttonActionPerformed(evt);
             }
         });
 
@@ -162,59 +187,52 @@ public class MainMenu extends javax.swing.JFrame {
             .addComponent(reserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(promoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(buttonsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(LoginButtton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(30, 30, 30)
                 .addComponent(reserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(promoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edificio-playas-en-Carilo-1.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(imageLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -224,17 +242,17 @@ public class MainMenu extends javax.swing.JFrame {
             .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(320, 320, 320)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,16 +271,20 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveButtonActionPerformed
-        // TODO add your handling code here:
+        showPanel(new ReservePanel());
     }//GEN-LAST:event_reserveButtonActionPerformed
 
     private void promoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promoButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_promoButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void LoginButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_LoginButttonActionPerformed
+
+    private void hotelNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hotelNameMouseClicked
+        showPanel(new PrincipalPanel());
+    }//GEN-LAST:event_hotelNameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -280,15 +302,15 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton LoginButtton;
+    private javax.swing.JButton adminButton;
     private javax.swing.JPanel background;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JLabel contactInformationTitle;
+    private javax.swing.JPanel contentPanel;
     private javax.swing.JPanel header;
     private javax.swing.JLabel hotelName;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton promoButton;
