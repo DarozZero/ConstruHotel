@@ -279,7 +279,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_promoButtonActionPerformed
 
     private void LoginButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButttonActionPerformed
-        // TODO add your handling code here:
+        UserLogIn login = new UserLogIn();
+        login.setVisible(true);
     }//GEN-LAST:event_LoginButttonActionPerformed
 
     private void hotelNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hotelNameMouseClicked
