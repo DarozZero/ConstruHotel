@@ -4,6 +4,10 @@
  */
 package View;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JPanel;
 /**
  *
  * @author BBoyp
@@ -15,6 +19,28 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        initStyles();
+        initContent();
+    }
+    
+    private void initStyles(){
+        hotelName.putClientProperty( "FlatLaf.styleClass", "h00" );
+        hotelName.setForeground(Color.white);
+        //contactInformationTitle.putClientProperty( "FlatLaf.style", "font: bold $h2.regular.font" );
+        contactInformationTitle.setForeground(Color.white);
+    }
+    
+    private void initContent(){
+        showPanel(new PrincipalPanel());
+    }
+    private void showPanel(JPanel panel){
+        panel.setSize(485, 567);
+        panel.setLocation(0, 0);
+        
+        contentPanel.removeAll();
+        contentPanel.add(panel,BorderLayout.CENTER);
+        contentPanel.revalidate();
+        contentPanel.repaint();
     }
 
     /**
@@ -26,61 +52,248 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        background = new javax.swing.JPanel();
+        header = new javax.swing.JPanel();
+        hotelName = new javax.swing.JLabel();
+        buttonsPanel = new javax.swing.JPanel();
+        reserveButton = new javax.swing.JButton();
+        promoButton = new javax.swing.JButton();
+        contactInformationTitle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        adminButton = new javax.swing.JButton();
+        LoginButtton = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(800, 650));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 650));
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        background.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        header.setBackground(new java.awt.Color(51, 153, 255));
 
-        setJMenuBar(jMenuBar1);
+        hotelName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        hotelName.setText("Nombre del Hotel!!!");
+        hotelName.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        hotelName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hotelName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hotelNameMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        buttonsPanel.setBackground(new java.awt.Color(102, 204, 255));
+        buttonsPanel.setPreferredSize(new java.awt.Dimension(312, 502));
+
+        reserveButton.setBackground(new java.awt.Color(51, 153, 255));
+        reserveButton.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        reserveButton.setForeground(new java.awt.Color(255, 255, 255));
+        reserveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pngegg.png"))); // NOI18N
+        reserveButton.setText("Reservar ");
+        reserveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        reserveButton.setBorderPainted(false);
+        reserveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reserveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        reserveButton.setIconTextGap(25);
+        reserveButton.setPreferredSize(new java.awt.Dimension(574, 512));
+        reserveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reserveButtonActionPerformed(evt);
+            }
+        });
+
+        promoButton.setBackground(new java.awt.Color(51, 153, 255));
+        promoButton.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        promoButton.setForeground(new java.awt.Color(255, 255, 255));
+        promoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giftbox.png"))); // NOI18N
+        promoButton.setText("Promociones ");
+        promoButton.setToolTipText("");
+        promoButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 5, 1, 1, new java.awt.Color(0, 0, 0)));
+        promoButton.setBorderPainted(false);
+        promoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        promoButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        promoButton.setIconTextGap(15);
+        promoButton.setPreferredSize(new java.awt.Dimension(574, 512));
+        promoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                promoButtonActionPerformed(evt);
+            }
+        });
+
+        contactInformationTitle.setBackground(new java.awt.Color(255, 255, 255));
+        contactInformationTitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        contactInformationTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        contactInformationTitle.setText("Información de contacto");
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("  \n       Col. Imaginaria cale X por Y y Z, New Weston\n\n                       hotelgenial@correo.com\n\n                          Tel: 999 99 99 999");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        adminButton.setBackground(new java.awt.Color(51, 153, 255));
+        adminButton.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        adminButton.setForeground(new java.awt.Color(255, 255, 255));
+        adminButton.setText("Admin");
+        adminButton.setToolTipText("");
+        adminButton.setBorder(new javax.swing.border.MatteBorder(null));
+        adminButton.setBorderPainted(false);
+        adminButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        LoginButtton.setBackground(new java.awt.Color(51, 153, 255));
+        LoginButtton.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        LoginButtton.setForeground(new java.awt.Color(255, 255, 255));
+        LoginButtton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Engrane.png"))); // NOI18N
+        LoginButtton.setText("Login");
+        LoginButtton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        LoginButtton.setBorderPainted(false);
+        LoginButtton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LoginButtton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LoginButtton.setIconTextGap(30);
+        LoginButtton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButttonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
+        buttonsPanel.setLayout(buttonsPanelLayout);
+        buttonsPanelLayout.setHorizontalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(reserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(promoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(LoginButtton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        buttonsPanelLayout.setVerticalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(reserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(promoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
+        );
+
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imageLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void reserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveButtonActionPerformed
+        showPanel(new ReservePanel());
+    }//GEN-LAST:event_reserveButtonActionPerformed
+
+    private void promoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_promoButtonActionPerformed
+
+    private void LoginButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButttonActionPerformed
+        UserLogIn login = new UserLogIn();
+        login.setVisible(true);
+    }//GEN-LAST:event_LoginButttonActionPerformed
+
+    private void hotelNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hotelNameMouseClicked
+        showPanel(new PrincipalPanel());
+    }//GEN-LAST:event_hotelNameMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+        FlatMaterialLighterIJTheme.setup();
+ 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -90,8 +303,18 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton LoginButtton;
+    private javax.swing.JButton adminButton;
+    private javax.swing.JPanel background;
+    private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JLabel contactInformationTitle;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel hotelName;
+    private javax.swing.JLabel imageLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton promoButton;
+    private javax.swing.JButton reserveButton;
     // End of variables declaration//GEN-END:variables
 }
