@@ -1,8 +1,9 @@
 View\MainMenu$2.class
 View\UserRegister$2.class
+View\RoomFloor.class
+View\RoomFloorDeluxe.class
 View\UserLogIn$1.class
 View\ReservePanel$1.class
-View\ajustar.class
 View\UserLogIn.class
 View\MainMenu$1.class
 View\MainMenu$4.class
