@@ -5,6 +5,8 @@
 package View;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,7 +19,7 @@ public class ReservePanel extends javax.swing.JPanel {
      */
     public ReservePanel() {
         initComponents();
-        initStyles();
+        initStyles();    
     }
 
     /**
@@ -31,7 +33,6 @@ public class ReservePanel extends javax.swing.JPanel {
 
         backGround = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
-        calendarPhoto = new javax.swing.JLabel();
         floorPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,14 +54,13 @@ public class ReservePanel extends javax.swing.JPanel {
         informationTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         informationArea = new javax.swing.JTextArea();
+        calendarBG = new javax.swing.JPanel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         backGround.setBackground(new java.awt.Color(255, 255, 255));
 
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Reservaciones");
-
-        calendarPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Calendario.png"))); // NOI18N
-        calendarPhoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         floorPanel.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -288,6 +288,26 @@ public class ReservePanel extends javax.swing.JPanel {
         informationArea.setText(" Habitacion A1: Primer piso.\tDisponible\n\n Mascotas: Permitidas.\n\n Servicios: Tina Spa, Accesorios para mascotas, Internet.\n\n Precios: 800$ x Dia.\n");
         jScrollPane1.setViewportView(informationArea);
 
+        jDateChooser1.setDateFormatString("dd/MM/y");
+        jDateChooser1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout calendarBGLayout = new javax.swing.GroupLayout(calendarBG);
+        calendarBG.setLayout(calendarBGLayout);
+        calendarBGLayout.setHorizontalGroup(
+            calendarBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(calendarBGLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        calendarBGLayout.setVerticalGroup(
+            calendarBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(calendarBGLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout backGroundLayout = new javax.swing.GroupLayout(backGround);
         backGround.setLayout(backGroundLayout);
         backGroundLayout.setHorizontalGroup(
@@ -299,7 +319,7 @@ public class ReservePanel extends javax.swing.JPanel {
                         .addGroup(backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(backGroundLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(calendarPhoto)
+                                .addComponent(calendarBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(backGroundLayout.createSequentialGroup()
@@ -324,9 +344,9 @@ public class ReservePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(floorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(calendarPhoto))
+                .addGroup(backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(calendarBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(floorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(backGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(upButtom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,12 +382,13 @@ public class ReservePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backGround;
-    private javax.swing.JLabel calendarPhoto;
+    private javax.swing.JPanel calendarBG;
     private javax.swing.JToggleButton downButtom;
     private javax.swing.JLabel floorLabel;
     private javax.swing.JPanel floorPanel;
     private javax.swing.JTextArea informationArea;
     private javax.swing.JLabel informationTitle;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
