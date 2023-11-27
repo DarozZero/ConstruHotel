@@ -17,46 +17,14 @@ public class RoomFloor extends javax.swing.JPanel {
     /**
      * Creates new form pisoHabitaciones
      */
-    public RoomFloor(int piso) {
-        this.piso = piso;
+    public RoomFloor() {
         initComponents();
         initStyles();
-        setFloor(this.piso);
     }
     
-    private void setFloor(int piso){
-        switch (piso) {
-            case 1:
-                changeRoomText(piso);
-                break;
-            case 2:
-                changeRoomText(piso);
-                break;
-            case 3:
-                changeRoomText(piso);
-                break;
-            case 4:
-                changeRoomText(piso);
-                break;
-            case 5:
-                changeRoomText(piso);
-                break;
-                
-            default:
-                JOptionPane.showMessageDialog(null, "Error inesperado x.x");
-        }
-    }
     
-    private void changeRoomText(int piso){
-        char letter = (char) (64 + piso);
-        roomText1.setText(letter + "1");
-        roomText2.setText(letter + "2");
-        roomText3.setText(letter + "3");
-        roomText4.setText(letter + "4");
-        roomText5.setText(letter + "5");
-        roomText6.setText(letter + "6");
-    }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,17 +38,17 @@ public class RoomFloor extends javax.swing.JPanel {
         corridor = new javax.swing.JPanel();
         corridorText = new javax.swing.JLabel();
         roomPanel1 = new javax.swing.JPanel();
-        roomText1 = new javax.swing.JLabel();
+        btnRoom1 = new javax.swing.JButton();
         roomPanel2 = new javax.swing.JPanel();
-        roomText2 = new javax.swing.JLabel();
+        btnRoom2 = new javax.swing.JButton();
         roomPanel3 = new javax.swing.JPanel();
-        roomText3 = new javax.swing.JLabel();
+        btnRoom3 = new javax.swing.JButton();
         roomPanel6 = new javax.swing.JPanel();
-        roomText6 = new javax.swing.JLabel();
+        btnRoom6 = new javax.swing.JButton();
         roomPanel5 = new javax.swing.JPanel();
-        roomText5 = new javax.swing.JLabel();
+        btnRoom5 = new javax.swing.JButton();
         roomPanel4 = new javax.swing.JPanel();
-        roomText4 = new javax.swing.JLabel();
+        btnRoom4 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(255, 203));
 
@@ -108,103 +76,133 @@ public class RoomFloor extends javax.swing.JPanel {
         roomPanel1.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel1.setPreferredSize(new java.awt.Dimension(66, 66));
 
-        roomText1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roomText1.setText("jLabel1");
+        btnRoom1.setText("11");
 
         javax.swing.GroupLayout roomPanel1Layout = new javax.swing.GroupLayout(roomPanel1);
         roomPanel1.setLayout(roomPanel1Layout);
         roomPanel1Layout.setHorizontalGroup(
             roomPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(roomPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(btnRoom1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roomPanel1Layout.setVerticalGroup(
             roomPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel1Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(btnRoom1)
+                .addGap(28, 28, 28))
         );
 
         roomPanel2.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel2.setPreferredSize(new java.awt.Dimension(66, 66));
 
-        roomText2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roomText2.setText("jLabel1");
+        btnRoom2.setText("12");
 
         javax.swing.GroupLayout roomPanel2Layout = new javax.swing.GroupLayout(roomPanel2);
         roomPanel2.setLayout(roomPanel2Layout);
         roomPanel2Layout.setHorizontalGroup(
             roomPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addGroup(roomPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnRoom2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roomPanel2Layout.setVerticalGroup(
             roomPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(roomPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnRoom2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         roomPanel3.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel3.setPreferredSize(new java.awt.Dimension(66, 66));
 
-        roomText3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roomText3.setText("jLabel1");
+        btnRoom3.setText("13");
 
         javax.swing.GroupLayout roomPanel3Layout = new javax.swing.GroupLayout(roomPanel3);
         roomPanel3.setLayout(roomPanel3Layout);
         roomPanel3Layout.setHorizontalGroup(
             roomPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addGroup(roomPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnRoom3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roomPanel3Layout.setVerticalGroup(
             roomPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRoom3)
+                .addGap(27, 27, 27))
         );
 
         roomPanel6.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel6.setPreferredSize(new java.awt.Dimension(66, 66));
 
-        roomText6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roomText6.setText("rom");
+        btnRoom6.setText("16");
 
         javax.swing.GroupLayout roomPanel6Layout = new javax.swing.GroupLayout(roomPanel6);
         roomPanel6.setLayout(roomPanel6Layout);
         roomPanel6Layout.setHorizontalGroup(
             roomPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText6, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addGroup(roomPanel6Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(btnRoom6)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         roomPanel6Layout.setVerticalGroup(
             roomPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRoom6)
+                .addGap(26, 26, 26))
         );
 
         roomPanel5.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel5.setPreferredSize(new java.awt.Dimension(66, 66));
 
-        roomText5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roomText5.setText("jLabel1");
+        btnRoom5.setText("15");
 
         javax.swing.GroupLayout roomPanel5Layout = new javax.swing.GroupLayout(roomPanel5);
         roomPanel5.setLayout(roomPanel5Layout);
         roomPanel5Layout.setHorizontalGroup(
             roomPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText5, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addGroup(roomPanel5Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(btnRoom5)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         roomPanel5Layout.setVerticalGroup(
             roomPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRoom5)
+                .addGap(26, 26, 26))
         );
 
         roomPanel4.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel4.setPreferredSize(new java.awt.Dimension(66, 66));
 
-        roomText4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        roomText4.setText("jLabel1");
+        btnRoom4.setText("14");
 
         javax.swing.GroupLayout roomPanel4Layout = new javax.swing.GroupLayout(roomPanel4);
         roomPanel4.setLayout(roomPanel4Layout);
         roomPanel4Layout.setHorizontalGroup(
             roomPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText4, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+            .addGroup(roomPanel4Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(btnRoom4)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         roomPanel4Layout.setVerticalGroup(
             roomPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(roomText4, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel4Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(btnRoom4)
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout floorPanelLayout = new javax.swing.GroupLayout(floorPanel);
@@ -216,17 +214,17 @@ public class RoomFloor extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(floorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(floorPanelLayout.createSequentialGroup()
-                        .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                        .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                         .addGap(14, 14, 14)
-                        .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                        .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
                     .addGroup(floorPanelLayout.createSequentialGroup()
-                        .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                        .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                         .addGap(2, 2, 2)))
                 .addContainerGap())
         );
@@ -235,16 +233,16 @@ public class RoomFloor extends javax.swing.JPanel {
             .addGroup(floorPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(floorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(corridor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(floorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                    .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                    .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
                 .addGap(11, 11, 11))
         );
 
@@ -264,6 +262,12 @@ public class RoomFloor extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnRoom1;
+    public javax.swing.JButton btnRoom2;
+    public javax.swing.JButton btnRoom3;
+    public javax.swing.JButton btnRoom4;
+    public javax.swing.JButton btnRoom5;
+    public javax.swing.JButton btnRoom6;
     private javax.swing.JPanel corridor;
     private javax.swing.JLabel corridorText;
     private javax.swing.JPanel floorPanel;
@@ -273,28 +277,10 @@ public class RoomFloor extends javax.swing.JPanel {
     private javax.swing.JPanel roomPanel4;
     private javax.swing.JPanel roomPanel5;
     private javax.swing.JPanel roomPanel6;
-    private javax.swing.JLabel roomText1;
-    private javax.swing.JLabel roomText2;
-    private javax.swing.JLabel roomText3;
-    private javax.swing.JLabel roomText4;
-    private javax.swing.JLabel roomText5;
-    private javax.swing.JLabel roomText6;
     // End of variables declaration//GEN-END:variables
 
     private void initStyles() {
     corridorText.putClientProperty( "FlatLaf.style", "font: $large.font" );
     corridorText.setForeground(Color.black);
-    roomText1.putClientProperty( "FlatLaf.style", "font: $large.font" );
-    roomText1.setForeground(Color.black);
-    roomText2.putClientProperty( "FlatLaf.style", "font: $large.font" );
-    roomText2.setForeground(Color.black);
-    roomText3.putClientProperty( "FlatLaf.style", "font: $large.font" );
-    roomText3.setForeground(Color.black);
-    roomText4.putClientProperty( "FlatLaf.style", "font: $large.font" );
-    roomText4.setForeground(Color.black);
-    roomText5.putClientProperty( "FlatLaf.style", "font: $large.font" );
-    roomText5.setForeground(Color.black);
-    roomText6.putClientProperty( "FlatLaf.style", "font: $large.font" );
-    roomText6.setForeground(Color.black);
     }
 }
