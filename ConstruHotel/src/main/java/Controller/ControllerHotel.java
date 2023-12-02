@@ -19,8 +19,13 @@ import View.RoomFloorDeluxe;
 import View.UserLogIn;
 import View.UserProfile;
 import View.UserRegister;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Float.parseFloat;
+import static java.time.temporal.ChronoUnit.DAYS;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -47,6 +52,7 @@ public class ControllerHotel implements ActionListener{
     private final int NUMBER_OF_FLOORS = 6;
     private final int NUMBER_OF_ROOMS = 6;
     private int currentFloor;
+    private boolean isUsrLog = false;
     
     public ControllerHotel(
             User user, 
@@ -84,6 +90,8 @@ public class ControllerHotel implements ActionListener{
         userRegister.btnRegister.addActionListener(this);
         reservePanel.btnUpAFloor.addActionListener(this);
         reservePanel.btnDownAFloor.addActionListener(this);
+        reservePanel.btnAvailability.addActionListener(this);
+        reservePanel.btnReservation.addActionListener(this);
         roomFloor.btnRoom1.addActionListener(this);
         roomFloor.btnRoom2.addActionListener(this);
         roomFloor.btnRoom3.addActionListener(this);
@@ -125,6 +133,12 @@ public class ControllerHotel implements ActionListener{
     }
     
     public void startRoomPanels(){
+        //actual date on chooser
+        Date actualDate = new Date();
+        reservePanel.reservationDateStart.setDate(actualDate);
+        Date tomorrowDate = new Date(actualDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
+        reservePanel.reservationDateEnd.setDate(tomorrowDate);
+        
         currentFloor = 1;
         reservePanel.showPanel(roomFloor);
     }
@@ -200,13 +214,22 @@ public class ControllerHotel implements ActionListener{
             changeFloor(currentFloor);
         }
         if (actionEvent.getSource() == reservePanel.btnDownAFloor) {
-            if (currentFloor>0) {
+            if (currentFloor>1) {
                 currentFloor-=1;
             }
             changeFloor(currentFloor);
         }
-       
-    
+       if(actionEvent.getSource() == reservePanel.btnAvailability){
+           setupActualDate();
+           isAvalible();
+       }
+       if(actionEvent.getSource() == reservePanel.btnReservation){
+           if(isUsrLog == true){
+               makeReservation();
+           }else{
+               JOptionPane.showMessageDialog(null, "Inicie Sesión por favor. 😁");
+           }
+       }
     }
     
    public void changeFloor(int floor){
@@ -217,9 +240,11 @@ public class ControllerHotel implements ActionListener{
         roomFloor.btnRoom4.setText(floor + "4");
         roomFloor.btnRoom5.setText(floor + "5");
         roomFloor.btnRoom6.setText(floor + "6");
+        reservePanel.floorLabel.setText("Piso " + String.valueOf(floor));
         reservePanel.showPanel(roomFloor);
        }
-        if (floor == 6) {
+        if (floor == NUMBER_OF_FLOORS) {
+           reservePanel.floorLabel.setText("Piso " + String.valueOf(floor));
            reservePanel.showPanel(roomFloorDeluxe);
        }
     }
@@ -257,7 +282,7 @@ public class ControllerHotel implements ActionListener{
         mainMenu.showProfileButton(isUserLogedIn);
         mainMenu.showLogInButton(isUserLogedIn);
         mainMenu.showLogOutButton(isUserLogedIn);
-    
+        isUsrLog = isUserLogedIn;    
     }
     
     
@@ -324,5 +349,120 @@ public class ControllerHotel implements ActionListener{
        } catch (Exception e) {
        }
    }
-    
+   public void isAvalible(){
+       if (currentFloor > 0 && currentFloor<NUMBER_OF_FLOORS) {
+            reservationData.setRoomID(roomFloor.btnRoom1.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloor.btnRoom1.setBackground(Color.green);
+            }else{
+                roomFloor.btnRoom1.setBackground(Color.red);
+            }
+            reservationData.setRoomID(roomFloor.btnRoom2.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloor.btnRoom2.setBackground(Color.green);
+            }else{
+                roomFloor.btnRoom2.setBackground(Color.red);
+            }
+            reservationData.setRoomID(roomFloor.btnRoom3.getText());
+           if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloor.btnRoom3.setBackground(Color.green);
+            }else{
+                roomFloor.btnRoom3.setBackground(Color.red);
+            }
+            reservationData.setRoomID(roomFloor.btnRoom4.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloor.btnRoom4.setBackground(Color.green);
+            }else{
+                roomFloor.btnRoom4.setBackground(Color.red);
+            }
+            reservationData.setRoomID(roomFloor.btnRoom5.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloor.btnRoom5.setBackground(Color.green);
+            }else{
+                roomFloor.btnRoom5.setBackground(Color.red);
+            }
+            reservationData.setRoomID(roomFloor.btnRoom6.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloor.btnRoom6.setBackground(Color.green);
+            }else{
+                roomFloor.btnRoom6.setBackground(Color.red);
+            }
+       }if(currentFloor == NUMBER_OF_FLOORS){
+            reservationData.setRoomID(roomFloorDeluxe.btnDeluxe1.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloorDeluxe.btnDeluxe1.setBackground(Color.green);
+            }else{
+                roomFloorDeluxe.btnDeluxe1.setBackground(Color.red);
+            }
+            reservationData.setRoomID(roomFloorDeluxe.btnDeluxe2.getText());
+            if(reservationDataQuerys.isAvalible(reservationData)){
+                roomFloorDeluxe.btnDeluxe2.setBackground(Color.green);
+            }else{
+                roomFloorDeluxe.btnDeluxe2.setBackground(Color.red);
+            }
+       }
+   }
+   
+   public void makeReservation(){
+      if(!"".equals(reservePanel.txtRoom.getText())){
+              reservationData.setRoomID(reservePanel.txtRoom.getText());
+              setupActualDate();
+              if(integrityReserve()){
+                  reservationData.setUserName(user.getUsername());
+                  reservationData.setFee(calculateFee());
+                  System.out.println("entre y ademas con esto de money: " + reservationData.getFee());
+                  boolean succes = reservationDataQuerys.makeReservation(reservationData);
+                  if(succes)
+                      JOptionPane.showMessageDialog(null, "Reservado con Exito");
+                  else
+                      JOptionPane.showMessageDialog(null, "Hubo un problema en la reservacion!");
+              }
+      }else{
+          JOptionPane.showMessageDialog(null, "Seleccione una habitacion por favor");
+      }
+   }
+   
+   private void setupActualDate(){
+       reservationData.setStartDate(new java.sql.Date(reservePanel.reservationDateStart.getDate().getTime()));
+       reservationData.setEndDate(new java.sql.Date(reservePanel.reservationDateEnd.getDate().getTime()));
+   }
+   
+   private float calculateFee(){
+       int days = calculateDays();
+       float dayPrice = parseFloat(reservePanel.txtRoomPrice.getText());
+       float resultado = (float)days * dayPrice;
+       System.out.println(days);
+       System.out.println(dayPrice);
+       return resultado;
+   }
+   
+   private int calculateDays(){
+       int milisecondsByDay = 86400000;
+       int days = ((int)reservationData.getEndDate().getTime() - 
+               (int)reservationData.getStartDate().getTime())/milisecondsByDay;
+       return days;
+   }
+   
+   private boolean integrityReserve(){
+       boolean isAvalible = reservationDataQuerys.isAvalible(reservationData);
+       boolean goodDates = calculateDays() > 0;
+       Date actualDate = new Date();
+       Date yesterdayDate = new Date(actualDate.getTime() - TimeUnit.DAYS.toMillis( 1 ));
+       boolean pastDays = reservationData.getStartDate().before(yesterdayDate)
+               || reservationData.getEndDate().before(actualDate);
+       if(isAvalible&&goodDates&&!pastDays){
+           return true;
+       }else{
+           if(!isAvalible){
+               JOptionPane.showMessageDialog(null, "Fecha no disponible");
+           }
+           if(!goodDates){
+           JOptionPane.showMessageDialog(null, "Fechas incorrectas: ");    
+           }
+           if(pastDays){
+           JOptionPane.showMessageDialog(null, "Fechas incorrectas: Los dias ya han pasado");    
+           }
+           return false;
+       }
+   }
 }
