@@ -1,7 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+ * RoomDataQuerys
+ *
+ * Ver 1.0 - Versión funcional final
+ *
+ * 04/12/2004
+ *
+ * Copyright - MuñozÁviles2024
+ */
 package Model;
 
 import java.sql.Connection;

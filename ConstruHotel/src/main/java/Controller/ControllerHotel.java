@@ -1,38 +1,27 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+ * ControllerHotel
+ *
+ * Ver 1.0 - Versión funcional final
+ *
+ * 04/12/2004
+ *
+ * Copyright - MuñozÁviles2024
+ */
 package Controller;
 
-import Model.ReservationData;
-import Model.ReservationDataQuerys;
-import Model.RoomData;
-import Model.RoomDataQuerys;
-import Model.User;
-import Model.UserQuerys;
-import Model.UsernameTakenViolation;
-import View.AdminEditForm;
-import View.MainMenu;
-import View.PrincipalPanel;
-import View.ReservePanel;
-import View.RoomFloor;
-import View.RoomFloorDeluxe;
-import View.UserLogIn;
-import View.UserProfile;
-import View.UserRegister;
-import View.AdminMenu;
-import View.AdminReservationForm;
-import View.OffersPanel;
-import java.awt.Color;
+import Model.*;
+import View.*;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.Float.parseFloat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
+import static java.lang.Float.parseFloat;
 
 /**
  *
@@ -138,20 +127,10 @@ public class ControllerHotel implements ActionListener{
         isUserLogedIn(false);
         mainMenu.setVisible(true);
     }
+
+
     
-    public void startLogin() {
-        userLogIn.setTitle("Inicie sesión");
-        userLogIn.setLocationRelativeTo(null);
-        userLogIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }
-    
-    public void startRegister(){
-        userRegister.setTitle("Registro");
-        userRegister.setLocationRelativeTo(null);
-        userRegister.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }
-    
-    public void startProfile(){
+    private void startProfile(){
         userProfile.setTitle("Perfil de " + user.getUsername());
         userProfile.setLocationRelativeTo(mainMenu);
         userProfile.lblNames.setText(user.getName());
@@ -161,7 +140,7 @@ public class ControllerHotel implements ActionListener{
     
     }
     
-    public void startRoomPanels(){
+    private void startRoomPanels(){
         //actual date on chooser
         Date actualDate = new Date();
         reservePanel.reservationDateStart.setDate(actualDate);
@@ -183,11 +162,11 @@ public class ControllerHotel implements ActionListener{
         if (actionEvent.getSource() == mainMenu.btnLogin) {
             userLogIn.setVisible(true);
         }
-        if(actionEvent.getSource() == mainMenu.btnUserProfile){
+        if (actionEvent.getSource() == mainMenu.btnUserProfile){
             makeProfileTable();
             userProfile.setVisible(true);
         }
-        if(actionEvent.getSource() == mainMenu.btnPromo){
+        if (actionEvent.getSource() == mainMenu.btnPromo){
             mainMenu.showPanel(offersPanel);
         }
         if (actionEvent.getSource() == userLogIn.btnLogin) {
@@ -258,26 +237,26 @@ public class ControllerHotel implements ActionListener{
             }
             changeFloor(currentFloor);
         }
-       if(actionEvent.getSource() == reservePanel.btnAvailability){
+       if (actionEvent.getSource() == reservePanel.btnAvailability){
            setupActualDate();
            isAvalible();
        }
-       if(actionEvent.getSource() == reservePanel.btnReservation){
-           if(isUsrLog == true){
+       if (actionEvent.getSource() == reservePanel.btnReservation){
+           if (isUsrLog == true){
                makeReservation();
            }else{
                JOptionPane.showMessageDialog(null, "Inicie Sesión por favor. 😁");
            }
        }
-       if(actionEvent.getSource() == mainMenu.btnAdmin){
+       if (actionEvent.getSource() == mainMenu.btnAdmin){
            makeAdminTable();
            adminMenu.setVisible(true);
            mainMenu.showPanel(principalPanel);
        }
-       if(actionEvent.getSource() == adminMenu.addButtom){
+       if (actionEvent.getSource() == adminMenu.addButtom){
            adminReservationForm.setVisible(true);
        }
-       if(actionEvent.getSource() == adminMenu.killButtom){  
+       if (actionEvent.getSource() == adminMenu.killButtom){  
           String result = JOptionPane.showInputDialog("Escribe el ID de la reservacion");
           try {
             int roomID = Integer.parseInt(result);
@@ -288,17 +267,17 @@ public class ControllerHotel implements ActionListener{
         }
            
        }
-       if(actionEvent.getSource() == adminMenu.editButtom){
+       if (actionEvent.getSource() == adminMenu.editButtom){
            adminEditForm.setVisible(true);
        }
-       if(actionEvent.getSource() == adminReservationForm.registerBtn){
+       if (actionEvent.getSource() == adminReservationForm.registerBtn){
             boolean succes = adminMakeReservation();
             if(succes){
                 makeAdminTable();
                 adminReservationForm.dispose();
             }
         }
-       if(actionEvent.getSource() == adminEditForm.editBtn){
+       if (actionEvent.getSource() == adminEditForm.editBtn){
             boolean succes = editReservationAdmin();
             if(succes){
                 makeAdminTable();
@@ -306,7 +285,7 @@ public class ControllerHotel implements ActionListener{
             }   
        }
        
-       if(actionEvent.getSource() == reservePanel.btnModififyAdmin){
+       if (actionEvent.getSource() == reservePanel.btnModififyAdmin){
             boolean succes = editRoomInformation();
             if(succes){
                 reservePanel.repaint();
@@ -316,7 +295,7 @@ public class ControllerHotel implements ActionListener{
        
     }
     
-   public void changeFloor(int floor){
+   private void changeFloor(int floor){
         if (floor > 0 && floor<NUMBER_OF_FLOORS) {
         roomFloor.btnRoom1.setText(floor + "1");
         roomFloor.btnRoom2.setText(floor + "2");
@@ -338,7 +317,7 @@ public class ControllerHotel implements ActionListener{
     }
     
     
-    public void cleanRegisterText (){
+    private void cleanRegisterText (){
         userRegister.txtUserName1.setText(null);
         userRegister.txtPassword.setText(null);
         userRegister.txtNames.setText(null);
@@ -346,12 +325,12 @@ public class ControllerHotel implements ActionListener{
         userRegister.txtMotherName.setText(null);
     }
     
-    public void cleanLoginText(){
+    private void cleanLoginText(){
         userLogIn.txtUsernameLogin.setText(null);
         userLogIn.txtPaswordLogin.setText(null);
     }
     
-    public boolean isNoTextBoxEmpty(){
+    private boolean isNoTextBoxEmpty(){
         if (
             userRegister.txtFatherName.getText().isEmpty() ||
             userRegister.txtMotherName.getText().isEmpty() ||
@@ -366,14 +345,14 @@ public class ControllerHotel implements ActionListener{
     
     }
     
-    public void isUserLogedIn(boolean isUserLogedIn){
+    private void isUserLogedIn(boolean isUserLogedIn){
         mainMenu.showProfileButton(isUserLogedIn);
         mainMenu.showLogInButton(isUserLogedIn);
         mainMenu.showLogOutButton(isUserLogedIn);
         isUsrLog = isUserLogedIn;    
     }
     
-    public void modifyAvalibleAdmin(){
+    private void modifyAvalibleAdmin(){
         reservePanel.btnModififyAdmin.setVisible(user.IsAdmin());
         reservePanel.txtRoomPrice.setEditable(user.IsAdmin());
         reservePanel.txtRoomCommodities.setEditable(user.IsAdmin());
@@ -382,7 +361,7 @@ public class ControllerHotel implements ActionListener{
     }
     
     
-    public void buttonLogin(){
+    private void buttonLogin(){
         char[] passwordChar = userLogIn.txtPaswordLogin.getPassword();
         String password = new String (passwordChar);
         user.setUsername(userLogIn.txtUsernameLogin.getText());
@@ -410,7 +389,7 @@ public class ControllerHotel implements ActionListener{
         }
     }
     
-    public void buttonRegister(){
+    private void buttonRegister(){
         char[] passwordChar = userRegister.txtPassword.getPassword();
         String password = new String (passwordChar);
         user.setUsername(userRegister.txtUserName1.getText());
@@ -432,7 +411,7 @@ public class ControllerHotel implements ActionListener{
         }
     }
 
-   public void buttonRoom(String roomId){
+   private void buttonRoom(String roomId){
        roomData.setRoomId(roomId);
        try {
            roomDataQuerys.obtainRoomData(roomData);
@@ -446,7 +425,8 @@ public class ControllerHotel implements ActionListener{
        } catch (Exception e) {
        }
    }
-   public void isAvalible(){
+   
+   private void isAvalible(){
        if (currentFloor > 0 && currentFloor<NUMBER_OF_FLOORS) {
             reservationData.setRoomID(roomFloor.btnRoom1.getText());
             if(reservationDataQuerys.isAvalible(reservationData)){
@@ -500,7 +480,7 @@ public class ControllerHotel implements ActionListener{
        }
    }
    
-   public void makeReservation(){
+   private void makeReservation(){
       if(!"".equals(reservePanel.txtRoom.getText())){
               reservationData.setRoomID(reservePanel.txtRoom.getText());
               setupActualDate();
@@ -565,7 +545,7 @@ public class ControllerHotel implements ActionListener{
        }
    }
    
-   public void makeAdminTable(){
+   private void makeAdminTable(){
    DefaultTableModel modelo =  new DefaultTableModel();
    modelo.setColumnIdentifiers(new Object[]{"ID Reservacion","Usuario","Habitación","Fecha Entrada"
            ,"Fecha Salida","Tarifa"});
@@ -585,7 +565,8 @@ public class ControllerHotel implements ActionListener{
        actual.getFee()});
    }
    }
-   public void makeProfileTable(){
+   
+   private void makeProfileTable(){
        DefaultTableModel modelo =  new DefaultTableModel();
        modelo.setColumnIdentifiers(new Object[]{"ID Reservacion","Usuario","Habitación","Fecha Entrada"
                ,"Fecha Salida","Tarifa"});
@@ -605,14 +586,16 @@ public class ControllerHotel implements ActionListener{
             actual.getFee()});
         }   
    }
-   public void deleteReservation(int roomID){
+
+   private void deleteReservation(int roomID){
      boolean isDeleted = reservationDataQuerys.deleteReservation(roomID);
      if(isDeleted)
          JOptionPane.showMessageDialog(null, "ReservaEliminada");
      else
          JOptionPane.showMessageDialog(null, "Error al eliminar, intentelo otra vez");
    }
-   public boolean adminMakeReservation(){
+
+   private boolean adminMakeReservation(){
        reservationData.setUserName(adminReservationForm.txtUser.getText());
        reservationData.setRoomID((String) adminReservationForm.comboRoom.getSelectedItem());
        reservationData.setStartDate(new java.sql.Date(adminReservationForm.startDate.getDate().getTime()) );
@@ -628,8 +611,8 @@ public class ControllerHotel implements ActionListener{
               }
        return false;
    }
-   
-   public boolean editReservationAdmin(){
+
+   private boolean editReservationAdmin(){
        reservationData.setReservationID(Integer.parseInt(adminEditForm.txtID.getText()));
        reservationData.setUserName(adminEditForm.txtUser.getText());
        reservationData.setRoomID((String) adminEditForm.comboRoom.getSelectedItem());
@@ -644,8 +627,9 @@ public class ControllerHotel implements ActionListener{
               
         return false;
    }
-   
-   public boolean editRoomInformation(){
+
+
+   private boolean editRoomInformation(){
        if(!"".equals(reservePanel.txtRoom.getText())){
            roomData.setRoomId(reservePanel.txtRoom.getText());
            roomData.setPricePerDay(Float.parseFloat(reservePanel.txtRoomPrice.getText()));
