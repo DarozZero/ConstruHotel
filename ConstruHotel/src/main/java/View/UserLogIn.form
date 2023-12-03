@@ -129,8 +129,8 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField1" pref="290" max="32767" attributes="0"/>
-                                  <Component id="jTextField2" max="32767" attributes="0"/>
+                                  <Component id="txtUsernameLogin" pref="290" max="32767" attributes="0"/>
+                                  <Component id="txtPaswordLogin" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -139,7 +139,7 @@
                       <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
                       <Component id="btnLogin" min="-2" pref="89" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="registerButtoim" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="btnRegisterLogin" min="-2" pref="123" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -153,20 +153,20 @@
               <Component id="jLabel6" min="-2" pref="58" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUsernameLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPaswordLogin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="registerButtoim" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRegisterLogin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -176,13 +176,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Acceder"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="txtUsernameLogin">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -202,13 +203,18 @@
         <Property name="text" type="java.lang.String" value="Accede al sistema"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="registerButtoim">
+    <Component class="javax.swing.JButton" name="btnRegisterLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtoimActionPerformed"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtPaswordLogin">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

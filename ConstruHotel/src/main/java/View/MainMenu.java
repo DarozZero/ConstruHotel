@@ -20,7 +20,6 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         initStyles();
-        initContent();
     }
     
     private void initStyles(){
@@ -30,18 +29,9 @@ public class MainMenu extends javax.swing.JFrame {
         contactInformationTitle.setForeground(Color.white);
     }
     
-    private void initContent(){
-        showPanel(new PrincipalPanel());
-    }
-    private void showPanel(JPanel panel){
-        panel.setSize(485, 567);
-        panel.setLocation(0, 0);
-        
-        contentPanel.removeAll();
-        contentPanel.add(panel,BorderLayout.CENTER);
-        contentPanel.revalidate();
-        contentPanel.repaint();
-    }
+    
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,19 +46,20 @@ public class MainMenu extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         hotelName = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
-        reserveButton = new javax.swing.JButton();
-        promoButton = new javax.swing.JButton();
+        btnReserve = new javax.swing.JButton();
+        btnPromo = new javax.swing.JButton();
         contactInformationTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        adminButton = new javax.swing.JButton();
-        LoginButtton = new javax.swing.JButton();
+        btnAdmin = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
+        btnUserProfile = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
         contentPanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(800, 650));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 650));
 
@@ -76,15 +67,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         header.setBackground(new java.awt.Color(51, 153, 255));
 
+        hotelName.setFont(new java.awt.Font("Eras Bold ITC", 1, 48)); // NOI18N
         hotelName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        hotelName.setText("Nombre del Hotel!!!");
+        hotelName.setText("5 STARS");
         hotelName.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         hotelName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        hotelName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hotelNameMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
@@ -93,7 +80,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(hotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,40 +93,30 @@ public class MainMenu extends javax.swing.JFrame {
         buttonsPanel.setBackground(new java.awt.Color(102, 204, 255));
         buttonsPanel.setPreferredSize(new java.awt.Dimension(312, 502));
 
-        reserveButton.setBackground(new java.awt.Color(51, 153, 255));
-        reserveButton.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        reserveButton.setForeground(new java.awt.Color(255, 255, 255));
-        reserveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pngegg.png"))); // NOI18N
-        reserveButton.setText("Reservar ");
-        reserveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        reserveButton.setBorderPainted(false);
-        reserveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        reserveButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        reserveButton.setIconTextGap(25);
-        reserveButton.setPreferredSize(new java.awt.Dimension(574, 512));
-        reserveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reserveButtonActionPerformed(evt);
-            }
-        });
+        btnReserve.setBackground(new java.awt.Color(51, 153, 255));
+        btnReserve.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnReserve.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pngegg.png"))); // NOI18N
+        btnReserve.setText("Reservar ");
+        btnReserve.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnReserve.setBorderPainted(false);
+        btnReserve.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReserve.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReserve.setIconTextGap(25);
+        btnReserve.setPreferredSize(new java.awt.Dimension(574, 512));
 
-        promoButton.setBackground(new java.awt.Color(51, 153, 255));
-        promoButton.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        promoButton.setForeground(new java.awt.Color(255, 255, 255));
-        promoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giftbox.png"))); // NOI18N
-        promoButton.setText("Promociones ");
-        promoButton.setToolTipText("");
-        promoButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 5, 1, 1, new java.awt.Color(0, 0, 0)));
-        promoButton.setBorderPainted(false);
-        promoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        promoButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        promoButton.setIconTextGap(15);
-        promoButton.setPreferredSize(new java.awt.Dimension(574, 512));
-        promoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                promoButtonActionPerformed(evt);
-            }
-        });
+        btnPromo.setBackground(new java.awt.Color(51, 153, 255));
+        btnPromo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        btnPromo.setForeground(new java.awt.Color(255, 255, 255));
+        btnPromo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giftbox.png"))); // NOI18N
+        btnPromo.setText("Promociones ");
+        btnPromo.setToolTipText("");
+        btnPromo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 5, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnPromo.setBorderPainted(false);
+        btnPromo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPromo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPromo.setIconTextGap(15);
+        btnPromo.setPreferredSize(new java.awt.Dimension(574, 512));
 
         contactInformationTitle.setBackground(new java.awt.Color(255, 255, 255));
         contactInformationTitle.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -152,71 +129,93 @@ public class MainMenu extends javax.swing.JFrame {
         jTextArea1.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea1.setRows(5);
-        jTextArea1.setText("  \n       Col. Imaginaria cale X por Y y Z, New Weston\n\n                       hotelgenial@correo.com\n\n                          Tel: 999 99 99 999");
+        jTextArea1.setText("  \n  Col. Imaginaria cale X por Y y Z, New Weston\n\n                hotelgenial@correo.com\n\n                      Tel: 999 99 99 999");
         jScrollPane1.setViewportView(jTextArea1);
 
-        adminButton.setBackground(new java.awt.Color(51, 153, 255));
-        adminButton.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        adminButton.setForeground(new java.awt.Color(255, 255, 255));
-        adminButton.setText("Admin");
-        adminButton.setToolTipText("");
-        adminButton.setBorder(new javax.swing.border.MatteBorder(null));
-        adminButton.setBorderPainted(false);
-        adminButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdmin.setBackground(new java.awt.Color(51, 153, 255));
+        btnAdmin.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        btnAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdmin.setText("Admin");
+        btnAdmin.setToolTipText("");
+        btnAdmin.setBorder(new javax.swing.border.MatteBorder(null));
+        btnAdmin.setBorderPainted(false);
+        btnAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        LoginButtton.setBackground(new java.awt.Color(51, 153, 255));
-        LoginButtton.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        LoginButtton.setForeground(new java.awt.Color(255, 255, 255));
-        LoginButtton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Engrane.png"))); // NOI18N
-        LoginButtton.setText("Login");
-        LoginButtton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        LoginButtton.setBorderPainted(false);
-        LoginButtton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButtton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LoginButtton.setIconTextGap(30);
-        LoginButtton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButttonActionPerformed(evt);
-            }
-        });
+        btnLogin.setBackground(new java.awt.Color(51, 153, 255));
+        btnLogin.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Engrane.png"))); // NOI18N
+        btnLogin.setText("Log in");
+        btnLogin.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnLogin.setBorderPainted(false);
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLogin.setIconTextGap(30);
+
+        btnUserProfile.setBackground(new java.awt.Color(51, 153, 255));
+        btnUserProfile.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        btnUserProfile.setForeground(new java.awt.Color(255, 255, 255));
+        btnUserProfile.setText("Perfil");
+        btnUserProfile.setToolTipText("");
+        btnUserProfile.setBorder(new javax.swing.border.MatteBorder(null));
+        btnUserProfile.setBorderPainted(false);
+        btnUserProfile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnLogOut.setBackground(new java.awt.Color(51, 153, 255));
+        btnLogOut.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Engrane.png"))); // NOI18N
+        btnLogOut.setText("Log out");
+        btnLogOut.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnLogOut.setBorderPainted(false);
+        btnLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogOut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLogOut.setIconTextGap(30);
 
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(reserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(promoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(LoginButtton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnReserve, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(buttonsPanelLayout.createSequentialGroup()
+                                .addComponent(btnUserProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)))
+                    .addComponent(btnPromo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(reserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(promoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPromo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(contactInformationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginButtton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
+                    .addComponent(btnUserProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         contentPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -270,23 +269,6 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void reserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveButtonActionPerformed
-        showPanel(new ReservePanel());
-    }//GEN-LAST:event_reserveButtonActionPerformed
-
-    private void promoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_promoButtonActionPerformed
-
-    private void LoginButttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButttonActionPerformed
-        UserLogIn login = new UserLogIn();
-        login.setVisible(true);
-    }//GEN-LAST:event_LoginButttonActionPerformed
-
-    private void hotelNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hotelNameMouseClicked
-        showPanel(new PrincipalPanel());
-    }//GEN-LAST:event_hotelNameMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -301,20 +283,64 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void showPanel(JPanel panel){
+        panel.setSize(485, 567);
+        panel.setLocation(0, 0);
+        
+        contentPanel.removeAll();
+        contentPanel.revalidate();
+        contentPanel.add(panel,BorderLayout.CENTER);
+        contentPanel.repaint();
+    }
+    
+    public void showAdminButton(boolean isAdmin){
+        if (isAdmin) {
+            btnAdmin.setVisible(true);
+        }else{
+            btnAdmin.setVisible(false);
+        }
+    }
+    
+    public void showProfileButton(boolean isLogedIn){
+        if (isLogedIn) {
+            btnUserProfile.setVisible(true);
+        }else{
+            btnUserProfile.setVisible(false);
+        }
+    }
+    
+    public void showLogInButton(boolean isLogedIn){
+        if (isLogedIn) {
+            btnLogin.setVisible(false);
+        }else{
+            btnLogin.setVisible(true);
+        }
+    }
+    
+    public void showLogOutButton(boolean isLogedIn){
+        if (isLogedIn) {
+            btnLogOut.setVisible(true);
+        }else{
+            btnLogOut.setVisible(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginButtton;
-    private javax.swing.JButton adminButton;
     private javax.swing.JPanel background;
+    public javax.swing.JButton btnAdmin;
+    public javax.swing.JButton btnLogOut;
+    public javax.swing.JButton btnLogin;
+    public javax.swing.JButton btnPromo;
+    public javax.swing.JButton btnReserve;
+    public javax.swing.JButton btnUserProfile;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JLabel contactInformationTitle;
-    private javax.swing.JPanel contentPanel;
+    public javax.swing.JPanel contentPanel;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel hotelName;
+    public javax.swing.JLabel hotelName;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton promoButton;
-    private javax.swing.JButton reserveButton;
     // End of variables declaration//GEN-END:variables
 }
