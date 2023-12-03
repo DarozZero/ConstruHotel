@@ -22,6 +22,7 @@ import View.UserProfile;
 import View.UserRegister;
 import View.AdminMenu;
 import View.AdminReservationForm;
+import View.OffersPanel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +50,7 @@ public class ControllerHotel implements ActionListener{
     private MainMenu mainMenu;
     private PrincipalPanel principalPanel;
     private ReservePanel reservePanel;
+    private OffersPanel offersPanel;
     private RoomFloor roomFloor;
     private RoomFloorDeluxe roomFloorDeluxe;
     private UserLogIn userLogIn;
@@ -91,12 +93,14 @@ public class ControllerHotel implements ActionListener{
         this.userRegister = userRegister;
         this.adminMenu = adminMenu;
         adminReservationForm = new AdminReservationForm();
+        offersPanel = new OffersPanel();
         adminEditForm = new AdminEditForm();
         mainMenu.btnAdmin.addActionListener(this);
         mainMenu.btnLogin.addActionListener(this);
         mainMenu.btnLogOut.addActionListener(this);
         mainMenu.btnReserve.addActionListener(this);
         mainMenu.btnUserProfile.addActionListener(this);
+        mainMenu.btnPromo.addActionListener(this);
         userLogIn.btnRegisterLogin.addActionListener(this);
         userLogIn.btnLogin.addActionListener(this);
         userRegister.btnRegister.addActionListener(this);
@@ -176,6 +180,9 @@ public class ControllerHotel implements ActionListener{
         if(actionEvent.getSource() == mainMenu.btnUserProfile){
             makeProfileTable();
             userProfile.setVisible(true);
+        }
+        if(actionEvent.getSource() == mainMenu.btnPromo){
+            mainMenu.showPanel(offersPanel);
         }
         if (actionEvent.getSource() == userLogIn.btnLogin) {
             buttonLogin();
@@ -264,20 +271,16 @@ public class ControllerHotel implements ActionListener{
        if(actionEvent.getSource() == adminMenu.addButtom){
            adminReservationForm.setVisible(true);
        }
-       if(actionEvent.getSource() == adminMenu.killButtom){
-          boolean isNumber;
-           do{
+       if(actionEvent.getSource() == adminMenu.killButtom){  
           String result = JOptionPane.showInputDialog("Escribe el ID de la reservacion");
           try {
             int roomID = Integer.parseInt(result);
-            isNumber = true;
             deleteReservation(roomID);
             makeAdminTable();
         } catch (NumberFormatException excepcion) {
             JOptionPane.showMessageDialog(null, "Escribe el numero del ID!");
-            isNumber = false;
         }
-           }while(!isNumber); 
+           
        }
        if(actionEvent.getSource() == adminMenu.editButtom){
            adminEditForm.setVisible(true);
@@ -519,8 +522,10 @@ public class ControllerHotel implements ActionListener{
        int days = calculateDays();
        float dayPrice = parseFloat(reservePanel.txtRoomPrice.getText());
        float resultado = (float)days * dayPrice;
-       System.out.println(days);
-       System.out.println(dayPrice);
+       if(days>=7){
+           resultado = (float) (resultado * .8);
+           JOptionPane.showMessageDialog(null, "20% De descuento aplicado!");
+       }
        return resultado;
    }
    

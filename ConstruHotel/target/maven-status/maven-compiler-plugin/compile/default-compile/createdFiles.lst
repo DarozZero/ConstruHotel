@@ -5,6 +5,7 @@ View\AdminReservationForm.class
 View\AdminMenu.class
 Model\RoomData.class
 Model\UsernameTakenViolation.class
+View\OffersPanel.class
 View\RoomFloor.class
 View\RoomFloorDeluxe.class
 View\UserLogIn$1.class
