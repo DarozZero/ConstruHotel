@@ -484,7 +484,7 @@ public class ControllerHotel implements ActionListener{
       if(!"".equals(reservePanel.txtRoom.getText())){
               reservationData.setRoomID(reservePanel.txtRoom.getText());
               setupActualDate();
-              if(integrityReserve()){
+              if(integrityReserve() && integrityRequires()){
                   reservationData.setUserName(user.getUsername());
                   reservationData.setFee(calculateFee());
                   System.out.println("entre y ademas con esto de money: " + reservationData.getFee());
@@ -520,6 +520,20 @@ public class ControllerHotel implements ActionListener{
        int days = ((int)reservationData.getEndDate().getTime() - 
                (int)reservationData.getStartDate().getTime())/milisecondsByDay;
        return days;
+   }
+   
+   private boolean integrityRequires(){
+       boolean isPetEqual = reservePanel.chckRoomPets.isSelected() == user.hasPets();
+       if((user.hasPets()) && (!isPetEqual)){
+           JOptionPane.showMessageDialog(null, "La habitación no está preparada para mascotas");
+           return false;
+       }
+       boolean isImpairedEqual = reservePanel.chckRoomImpaired.isSelected() == user.isImpaired();
+       if((user.isImpaired()) && (!isImpairedEqual)){
+           JOptionPane.showMessageDialog(null, "La habitación no esta preparada para discapacitados, elija otra.");
+           return false;
+       }
+       return true;
    }
    
    private boolean integrityReserve(){
