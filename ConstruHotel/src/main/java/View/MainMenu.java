@@ -331,7 +331,7 @@ public class MainMenu extends javax.swing.JFrame {
     public javax.swing.JButton btnAdmin;
     public javax.swing.JButton btnLogOut;
     public javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnPromo;
+    public javax.swing.JButton btnPromo;
     public javax.swing.JButton btnReserve;
     public javax.swing.JButton btnUserProfile;
     private javax.swing.JPanel buttonsPanel;

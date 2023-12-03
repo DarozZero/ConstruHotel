@@ -76,133 +76,127 @@ public class RoomFloor extends javax.swing.JPanel {
         roomPanel1.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel1.setPreferredSize(new java.awt.Dimension(66, 66));
 
+        btnRoom1.setBackground(new java.awt.Color(102, 255, 102));
+        btnRoom1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnRoom1.setForeground(new java.awt.Color(0, 0, 0));
         btnRoom1.setText("11");
+        btnRoom1.setBorder(null);
+        btnRoom1.setBorderPainted(false);
 
         javax.swing.GroupLayout roomPanel1Layout = new javax.swing.GroupLayout(roomPanel1);
         roomPanel1.setLayout(roomPanel1Layout);
         roomPanel1Layout.setHorizontalGroup(
             roomPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnRoom1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnRoom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
         roomPanel1Layout.setVerticalGroup(
             roomPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(btnRoom1)
-                .addGap(28, 28, 28))
+            .addComponent(btnRoom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         roomPanel2.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel2.setPreferredSize(new java.awt.Dimension(66, 66));
 
+        btnRoom2.setBackground(new java.awt.Color(102, 255, 102));
+        btnRoom2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnRoom2.setForeground(new java.awt.Color(0, 0, 0));
         btnRoom2.setText("12");
+        btnRoom2.setBorder(null);
+        btnRoom2.setBorderPainted(false);
 
         javax.swing.GroupLayout roomPanel2Layout = new javax.swing.GroupLayout(roomPanel2);
         roomPanel2.setLayout(roomPanel2Layout);
         roomPanel2Layout.setHorizontalGroup(
             roomPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btnRoom2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnRoom2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
         roomPanel2Layout.setVerticalGroup(
             roomPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btnRoom2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnRoom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         roomPanel3.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel3.setPreferredSize(new java.awt.Dimension(66, 66));
 
+        btnRoom3.setBackground(new java.awt.Color(102, 255, 102));
+        btnRoom3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnRoom3.setForeground(new java.awt.Color(0, 0, 0));
         btnRoom3.setText("13");
+        btnRoom3.setBorder(null);
+        btnRoom3.setBorderPainted(false);
 
         javax.swing.GroupLayout roomPanel3Layout = new javax.swing.GroupLayout(roomPanel3);
         roomPanel3.setLayout(roomPanel3Layout);
         roomPanel3Layout.setHorizontalGroup(
             roomPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btnRoom3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnRoom3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
         );
         roomPanel3Layout.setVerticalGroup(
             roomPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRoom3)
-                .addGap(27, 27, 27))
+            .addComponent(btnRoom3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         roomPanel6.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel6.setPreferredSize(new java.awt.Dimension(66, 66));
 
+        btnRoom6.setBackground(new java.awt.Color(102, 255, 102));
+        btnRoom6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnRoom6.setForeground(new java.awt.Color(0, 0, 0));
         btnRoom6.setText("16");
+        btnRoom6.setBorder(null);
+        btnRoom6.setBorderPainted(false);
 
         javax.swing.GroupLayout roomPanel6Layout = new javax.swing.GroupLayout(roomPanel6);
         roomPanel6.setLayout(roomPanel6Layout);
         roomPanel6Layout.setHorizontalGroup(
             roomPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel6Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnRoom6)
-                .addContainerGap(41, Short.MAX_VALUE))
+            .addComponent(btnRoom6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         roomPanel6Layout.setVerticalGroup(
             roomPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRoom6)
-                .addGap(26, 26, 26))
+            .addComponent(btnRoom6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         roomPanel5.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel5.setPreferredSize(new java.awt.Dimension(66, 66));
 
+        btnRoom5.setBackground(new java.awt.Color(102, 255, 102));
+        btnRoom5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnRoom5.setForeground(new java.awt.Color(0, 0, 0));
         btnRoom5.setText("15");
+        btnRoom5.setBorder(null);
+        btnRoom5.setBorderPainted(false);
 
         javax.swing.GroupLayout roomPanel5Layout = new javax.swing.GroupLayout(roomPanel5);
         roomPanel5.setLayout(roomPanel5Layout);
         roomPanel5Layout.setHorizontalGroup(
             roomPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel5Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnRoom5)
-                .addContainerGap(40, Short.MAX_VALUE))
+            .addComponent(btnRoom5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         roomPanel5Layout.setVerticalGroup(
             roomPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRoom5)
-                .addGap(26, 26, 26))
+            .addComponent(btnRoom5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         roomPanel4.setBackground(new java.awt.Color(102, 255, 102));
         roomPanel4.setPreferredSize(new java.awt.Dimension(66, 66));
 
+        btnRoom4.setBackground(new java.awt.Color(102, 255, 102));
+        btnRoom4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnRoom4.setForeground(new java.awt.Color(0, 0, 0));
         btnRoom4.setText("14");
+        btnRoom4.setBorder(null);
+        btnRoom4.setBorderPainted(false);
 
         javax.swing.GroupLayout roomPanel4Layout = new javax.swing.GroupLayout(roomPanel4);
         roomPanel4.setLayout(roomPanel4Layout);
         roomPanel4Layout.setHorizontalGroup(
             roomPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roomPanel4Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnRoom4)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(btnRoom4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         roomPanel4Layout.setVerticalGroup(
             roomPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomPanel4Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(btnRoom4)
-                .addGap(27, 27, 27))
+            .addComponent(btnRoom4, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout floorPanelLayout = new javax.swing.GroupLayout(floorPanel);
@@ -214,17 +208,17 @@ public class RoomFloor extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(floorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(floorPanelLayout.createSequentialGroup()
-                        .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addGap(14, 14, 14)
-                        .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+                        .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
                     .addGroup(floorPanelLayout.createSequentialGroup()
-                        .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                        .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                        .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                         .addGap(2, 2, 2)))
                 .addContainerGap())
         );
@@ -233,16 +227,16 @@ public class RoomFloor extends javax.swing.JPanel {
             .addGroup(floorPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(floorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                    .addComponent(roomPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(roomPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(roomPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(corridor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(floorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                    .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                    .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                    .addComponent(roomPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(roomPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(roomPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
                 .addGap(11, 11, 11))
         );
 

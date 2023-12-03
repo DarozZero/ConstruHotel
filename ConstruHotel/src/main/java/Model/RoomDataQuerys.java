@@ -49,5 +49,34 @@ public class RoomDataQuerys extends DataBaseConnection{
         
     }
     
+    public boolean editRoomData(RoomData roomData){
+        PreparedStatement query = null; 
+        Connection databaseConnection = getConnection();
+        
+        String sql = "UPDATE `reservacionhotel` SET pricePerDay=?, petAvailable=?, impairedAvailable=?, commodities=? "
+                + "WHERE roomId=?";
+        try {
+            query = databaseConnection.prepareStatement(sql);
+            query.setFloat(1, roomData.getPricePerDay());
+            query.setBoolean(2, roomData.isPetAvaliable());
+            query.setBoolean(3, roomData.isImpairedAvailable());
+            query.setString(4, roomData.getCommodities());
+            query.setString(5, roomData.getRoomId());
+            
+            query.execute();
+            return true;
+            
+        } catch (SQLException e){         
+            System.out.println(e);     
+            return false;
+        } finally {
+            try {
+                databaseConnection.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+    
     
 }
