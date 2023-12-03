@@ -17,7 +17,7 @@ public class DataBaseConnection {
     private final String base = "construhotel";
     private final String user = "root";
     private final String password = "";
-    private final String url = "jdbc:mysql://localhost:3310/" + base;
+    private final String url = "jdbc:mysql://localhost:3306/" + base;
     private Connection dataBaseConnection = null;
     
     public Connection getConnection(){

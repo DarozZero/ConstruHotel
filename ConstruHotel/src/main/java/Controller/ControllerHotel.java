@@ -71,12 +71,18 @@ public class ControllerHotel implements ActionListener{
             RoomDataQuerys roomDataQuerys,
             ReservationData reservationData,
             ReservationDataQuerys reservationDataQuerys,
-            MainMenu mainMenu, PrincipalPanel principalPanel,
-            ReservePanel reservePanel, RoomFloor roomFloor,
-            RoomFloorDeluxe roomFloorDeluxe, UserLogIn userLogIn,
+            MainMenu mainMenu, 
+            PrincipalPanel principalPanel,
+            ReservePanel reservePanel, 
+            RoomFloor roomFloor,
+            RoomFloorDeluxe roomFloorDeluxe, 
+            UserLogIn userLogIn,
             UserProfile userProfile,
             UserRegister userRegister,
-            AdminMenu adminMenu) {
+            AdminMenu adminMenu,
+            AdminReservationForm adminReservationForm,
+            OffersPanel offersPanel,
+            AdminEditForm adminEditForm) {
         this.user = user;
         this.userQuerys = userQuerys;
         this.roomData = roomData;
@@ -92,9 +98,9 @@ public class ControllerHotel implements ActionListener{
         this.userProfile = userProfile;
         this.userRegister = userRegister;
         this.adminMenu = adminMenu;
-        adminReservationForm = new AdminReservationForm();
-        offersPanel = new OffersPanel();
-        adminEditForm = new AdminEditForm();
+        this.adminReservationForm = adminReservationForm;
+        this.offersPanel = offersPanel;
+        this.adminEditForm = adminEditForm;
         mainMenu.btnAdmin.addActionListener(this);
         mainMenu.btnLogin.addActionListener(this);
         mainMenu.btnLogOut.addActionListener(this);
@@ -372,7 +378,7 @@ public class ControllerHotel implements ActionListener{
         reservePanel.txtRoomPrice.setEditable(user.IsAdmin());
         reservePanel.txtRoomCommodities.setEditable(user.IsAdmin());
         reservePanel.chckRoomPets.setEnabled(user.IsAdmin());
-        reservePanel.chckRoomImpaired.setEnabled(isUsrLog);
+        reservePanel.chckRoomImpaired.setEnabled(user.IsAdmin());
     }
     
     

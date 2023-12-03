@@ -11,8 +11,11 @@ import Model.RoomData;
 import Model.RoomDataQuerys;
 import Model.User;
 import Model.UserQuerys;
+import View.AdminEditForm;
 import View.AdminMenu;
+import View.AdminReservationForm;
 import View.MainMenu;
+import View.OffersPanel;
 import View.PrincipalPanel;
 import View.ReservePanel;
 import View.RoomFloor;
@@ -48,6 +51,9 @@ public class Run {
      UserProfile userProfile = new UserProfile();
      UserRegister userRegister = new UserRegister();
      AdminMenu adminMenu = new AdminMenu();
+     AdminReservationForm adminReservationForm = new AdminReservationForm();
+     OffersPanel offersPanel = new OffersPanel();
+     AdminEditForm adminEditForm = new AdminEditForm();
      ControllerHotel controllerHotel = new ControllerHotel(
         user, 
         userQuerys,
@@ -63,7 +69,10 @@ public class Run {
         userLogIn, 
         userProfile, 
         userRegister,
-        adminMenu);              
+        adminMenu,
+        adminReservationForm,
+        offersPanel,
+        adminEditForm);              
     
     controllerHotel.startMainMenu();
     }

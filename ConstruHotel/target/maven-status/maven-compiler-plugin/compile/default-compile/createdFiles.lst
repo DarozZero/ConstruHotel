@@ -5,9 +5,9 @@ View\AdminReservationForm.class
 View\AdminMenu.class
 Model\RoomData.class
 Model\UsernameTakenViolation.class
-View\OffersPanel.class
 View\RoomFloor.class
 View\RoomFloorDeluxe.class
+View\OffersPanel.class
 View\UserLogIn$1.class
 Model\RoomDataQuerys.class
 View\UserLogIn.class
@@ -19,8 +19,8 @@ Controller\ControllerHotel.class
 Model\DataBaseConnection.class
 View\AdminMenu$1.class
 Model\UserQuerys.class
-View\AdminMenu$3.class
 View\MainMenu.class
+View\AdminMenu$3.class
 View\AdminMenu$4.class
 Model\User.class
 View\UserProfile$1.class
