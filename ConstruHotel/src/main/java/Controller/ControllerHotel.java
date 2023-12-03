@@ -11,6 +11,7 @@ import Model.RoomDataQuerys;
 import Model.User;
 import Model.UserQuerys;
 import Model.UsernameTakenViolation;
+import View.AdminEditForm;
 import View.MainMenu;
 import View.PrincipalPanel;
 import View.ReservePanel;
@@ -19,19 +20,23 @@ import View.RoomFloorDeluxe;
 import View.UserLogIn;
 import View.UserProfile;
 import View.UserRegister;
+import View.AdminMenu;
+import View.AdminReservationForm;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.Float.parseFloat;
-import static java.time.temporal.ChronoUnit.DAYS;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ErPat
+ * @author Daroz
  */
 public class ControllerHotel implements ActionListener{
     
@@ -49,6 +54,9 @@ public class ControllerHotel implements ActionListener{
     private UserLogIn userLogIn;
     private UserProfile userProfile;
     private UserRegister userRegister;
+    private AdminMenu adminMenu;
+    private AdminEditForm adminEditForm;
+    private AdminReservationForm adminReservationForm;
     private final int NUMBER_OF_FLOORS = 6;
     private final int NUMBER_OF_ROOMS = 6;
     private int currentFloor;
@@ -65,7 +73,8 @@ public class ControllerHotel implements ActionListener{
             ReservePanel reservePanel, RoomFloor roomFloor,
             RoomFloorDeluxe roomFloorDeluxe, UserLogIn userLogIn,
             UserProfile userProfile,
-            UserRegister userRegister) {
+            UserRegister userRegister,
+            AdminMenu adminMenu) {
         this.user = user;
         this.userQuerys = userQuerys;
         this.roomData = roomData;
@@ -80,6 +89,9 @@ public class ControllerHotel implements ActionListener{
         this.userLogIn = userLogIn;
         this.userProfile = userProfile;
         this.userRegister = userRegister;
+        this.adminMenu = adminMenu;
+        adminReservationForm = new AdminReservationForm();
+        adminEditForm = new AdminEditForm();
         mainMenu.btnAdmin.addActionListener(this);
         mainMenu.btnLogin.addActionListener(this);
         mainMenu.btnLogOut.addActionListener(this);
@@ -92,6 +104,7 @@ public class ControllerHotel implements ActionListener{
         reservePanel.btnDownAFloor.addActionListener(this);
         reservePanel.btnAvailability.addActionListener(this);
         reservePanel.btnReservation.addActionListener(this);
+        reservePanel.btnModififyAdmin.addActionListener(this);
         roomFloor.btnRoom1.addActionListener(this);
         roomFloor.btnRoom2.addActionListener(this);
         roomFloor.btnRoom3.addActionListener(this);
@@ -100,12 +113,18 @@ public class ControllerHotel implements ActionListener{
         roomFloor.btnRoom6.addActionListener(this);
         roomFloorDeluxe.btnDeluxe1.addActionListener(this);
         roomFloorDeluxe.btnDeluxe2.addActionListener(this);
+        adminMenu.addButtom.addActionListener(this);
+        adminMenu.killButtom.addActionListener(this);
+        adminMenu.editButtom.addActionListener(this);
+        adminEditForm.editBtn.addActionListener(this);
+        adminReservationForm.registerBtn.addActionListener(this);
     }
     
     public void startMainMenu(){
         mainMenu.setTitle("Bienvenido al hotel - nombre - ");
         mainMenu.showPanel(principalPanel);
         mainMenu.showAdminButton(false);
+        reservePanel.btnModififyAdmin.setVisible(false);
         isUserLogedIn(false);
         mainMenu.setVisible(true);
     }
@@ -148,20 +167,27 @@ public class ControllerHotel implements ActionListener{
         if (actionEvent.getSource() == mainMenu.btnReserve) {
             startRoomPanels();
             mainMenu.showPanel(reservePanel);
+            setupActualDate();
+            isAvalible();
         }
         if (actionEvent.getSource() == mainMenu.btnLogin) {
             userLogIn.setVisible(true);
         }
         if(actionEvent.getSource() == mainMenu.btnUserProfile){
+            makeProfileTable();
             userProfile.setVisible(true);
         }
         if (actionEvent.getSource() == userLogIn.btnLogin) {
             buttonLogin();
         }
         if (actionEvent.getSource() == mainMenu.btnLogOut) {
+            user.setIsAdmin(false);
             isUserLogedIn(false);
             mainMenu.showAdminButton(false);
+            modifyAvalibleAdmin();
             mainMenu.repaint();
+            mainMenu.showPanel(principalPanel);
+            
         }
         if (actionEvent.getSource() == userLogIn.btnRegisterLogin) {
             userLogIn.dispose();
@@ -230,6 +256,55 @@ public class ControllerHotel implements ActionListener{
                JOptionPane.showMessageDialog(null, "Inicie Sesión por favor. 😁");
            }
        }
+       if(actionEvent.getSource() == mainMenu.btnAdmin){
+           makeAdminTable();
+           adminMenu.setVisible(true);
+           mainMenu.showPanel(principalPanel);
+       }
+       if(actionEvent.getSource() == adminMenu.addButtom){
+           adminReservationForm.setVisible(true);
+       }
+       if(actionEvent.getSource() == adminMenu.killButtom){
+          boolean isNumber;
+           do{
+          String result = JOptionPane.showInputDialog("Escribe el ID de la reservacion");
+          try {
+            int roomID = Integer.parseInt(result);
+            isNumber = true;
+            deleteReservation(roomID);
+            makeAdminTable();
+        } catch (NumberFormatException excepcion) {
+            JOptionPane.showMessageDialog(null, "Escribe el numero del ID!");
+            isNumber = false;
+        }
+           }while(!isNumber); 
+       }
+       if(actionEvent.getSource() == adminMenu.editButtom){
+           adminEditForm.setVisible(true);
+       }
+       if(actionEvent.getSource() == adminReservationForm.registerBtn){
+            boolean succes = adminMakeReservation();
+            if(succes){
+                makeAdminTable();
+                adminReservationForm.dispose();
+            }
+        }
+       if(actionEvent.getSource() == adminEditForm.editBtn){
+            boolean succes = editReservationAdmin();
+            if(succes){
+                makeAdminTable();
+                adminEditForm.dispose();
+            }   
+       }
+       
+       if(actionEvent.getSource() == reservePanel.btnModififyAdmin){
+            boolean succes = editRoomInformation();
+            if(succes){
+                reservePanel.repaint();
+            }
+                
+       }
+       
     }
     
    public void changeFloor(int floor){
@@ -242,10 +317,14 @@ public class ControllerHotel implements ActionListener{
         roomFloor.btnRoom6.setText(floor + "6");
         reservePanel.floorLabel.setText("Piso " + String.valueOf(floor));
         reservePanel.showPanel(roomFloor);
+        setupActualDate();
+        isAvalible();
        }
         if (floor == NUMBER_OF_FLOORS) {
            reservePanel.floorLabel.setText("Piso " + String.valueOf(floor));
            reservePanel.showPanel(roomFloorDeluxe);
+           setupActualDate();
+           isAvalible();
        }
     }
     
@@ -285,6 +364,14 @@ public class ControllerHotel implements ActionListener{
         isUsrLog = isUserLogedIn;    
     }
     
+    public void modifyAvalibleAdmin(){
+        reservePanel.btnModififyAdmin.setVisible(user.IsAdmin());
+        reservePanel.txtRoomPrice.setEditable(user.IsAdmin());
+        reservePanel.txtRoomCommodities.setEditable(user.IsAdmin());
+        reservePanel.chckRoomPets.setEnabled(user.IsAdmin());
+        reservePanel.chckRoomImpaired.setEnabled(isUsrLog);
+    }
+    
     
     public void buttonLogin(){
         char[] passwordChar = userLogIn.txtPaswordLogin.getPassword();
@@ -299,6 +386,7 @@ public class ControllerHotel implements ActionListener{
                 cleanLoginText();
                 JOptionPane.showMessageDialog(null, "Bienvenido : " + user.getName() + " " + user.getFamilyNames());     
                 mainMenu.showAdminButton(user.IsAdmin());
+                modifyAvalibleAdmin();
                 isUserLogedIn(true);
                 startProfile();
                 mainMenu.repaint();
@@ -464,5 +552,101 @@ public class ControllerHotel implements ActionListener{
            }
            return false;
        }
+   }
+   
+   public void makeAdminTable(){
+   DefaultTableModel modelo =  new DefaultTableModel();
+   modelo.setColumnIdentifiers(new Object[]{"ID Reservacion","Usuario","Habitación","Fecha Entrada"
+           ,"Fecha Salida","Tarifa"});
+   adminMenu.contentTable.setModel(modelo);
+   modelo.setRowCount(0);
+   
+   List<ReservationData> reservations;
+   reservations = reservationDataQuerys.showReservation();
+   
+   for(ReservationData actual : reservations){
+       modelo.addRow(new Object[]{
+       actual.getReservationID(),
+       actual.getUserName(),
+       actual.getRoomID(),
+       actual.getStartDate(),
+       actual.getEndDate(),
+       actual.getFee()});
+   }
+   }
+   public void makeProfileTable(){
+       DefaultTableModel modelo =  new DefaultTableModel();
+       modelo.setColumnIdentifiers(new Object[]{"ID Reservacion","Usuario","Habitación","Fecha Entrada"
+               ,"Fecha Salida","Tarifa"});
+       userProfile.profileTable.setModel(modelo);
+       modelo.setRowCount(0);
+
+       List<ReservationData> reservations;
+       reservations = reservationDataQuerys.showUserReservations(user.getUsername());
+
+       for(ReservationData actual : reservations){
+            modelo.addRow(new Object[]{
+            actual.getReservationID(),
+            actual.getUserName(),
+            actual.getRoomID(),
+            actual.getStartDate(),
+            actual.getEndDate(),
+            actual.getFee()});
+        }   
+   }
+   public void deleteReservation(int roomID){
+     boolean isDeleted = reservationDataQuerys.deleteReservation(roomID);
+     if(isDeleted)
+         JOptionPane.showMessageDialog(null, "ReservaEliminada");
+     else
+         JOptionPane.showMessageDialog(null, "Error al eliminar, intentelo otra vez");
+   }
+   public boolean adminMakeReservation(){
+       reservationData.setUserName(adminReservationForm.txtUser.getText());
+       reservationData.setRoomID((String) adminReservationForm.comboRoom.getSelectedItem());
+       reservationData.setStartDate(new java.sql.Date(adminReservationForm.startDate.getDate().getTime()) );
+       reservationData.setEndDate(new java.sql.Date(adminReservationForm.endDate.getDate().getTime()));
+       reservationData.setFee(Float.parseFloat(adminReservationForm.txtFee.getText()));
+       if(integrityReserve()){
+                boolean succes = reservationDataQuerys.makeReservation(reservationData);
+                if(succes){
+                    JOptionPane.showMessageDialog(null, "Reservado con Exito");
+                return true;
+                }else
+                    JOptionPane.showMessageDialog(null, "Hubo un problema en la reservacion, verifique los datos!");
+              }
+       return false;
+   }
+   
+   public boolean editReservationAdmin(){
+       reservationData.setReservationID(Integer.parseInt(adminEditForm.txtID.getText()));
+       reservationData.setUserName(adminEditForm.txtUser.getText());
+       reservationData.setRoomID((String) adminEditForm.comboRoom.getSelectedItem());
+       reservationData.setStartDate(new java.sql.Date(adminEditForm.startDate.getDate().getTime()) );
+       reservationData.setEndDate(new java.sql.Date(adminEditForm.endDate.getDate().getTime()));
+       reservationData.setFee(Float.parseFloat(adminEditForm.txtFee.getText()));
+          boolean succes = reservationDataQuerys.editReservation(reservationData);
+            if(succes){
+                return true;
+            }else
+                JOptionPane.showMessageDialog(null, "Hubo un problema en la modificacion, verifique los datos!");
+              
+        return false;
+   }
+   
+   public boolean editRoomInformation(){
+       if(!"".equals(reservePanel.txtRoom.getText())){
+           roomData.setRoomId(reservePanel.txtRoom.getText());
+           roomData.setPricePerDay(Float.parseFloat(reservePanel.txtRoomPrice.getText()));
+           roomData.setIsPetAvaliable(reservePanel.chckRoomPets.isSelected());
+           roomData.setIsImpairedAvailable(reservePanel.chckRoomImpaired.isSelected());
+           roomData.setCommodities(reservePanel.txtRoomCommodities.getText());
+           boolean succes = roomDataQuerys.editRoomData(roomData);
+           JOptionPane.showMessageDialog(null, "Modificación Realizada");
+           return true;
+       }else{
+           JOptionPane.showMessageDialog(null, "Seleccione una habitacion por favor");
+       }
+       return false;
    }
 }

@@ -31,10 +31,11 @@ public class UserProfile extends javax.swing.JFrame {
         lblNames = new javax.swing.JLabel();
         lblFamilyNames = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtReservationsProfile = new javax.swing.JTextPane();
         chckPetsProfile = new javax.swing.JCheckBox();
         chckImpairedProfile = new javax.swing.JCheckBox();
+        tablebg = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        profileTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,59 +45,77 @@ public class UserProfile extends javax.swing.JFrame {
 
         jLabel1.setText("Reservaciones:");
 
-        txtReservationsProfile.setEditable(false);
-        jScrollPane1.setViewportView(txtReservationsProfile);
-
         chckPetsProfile.setText("Mascotas");
         chckPetsProfile.setEnabled(false);
 
         chckImpairedProfile.setText("Discapacidades motrices");
         chckImpairedProfile.setEnabled(false);
 
+        tablebg.setBackground(new java.awt.Color(153, 255, 255));
+
+        profileTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(profileTable);
+
+        javax.swing.GroupLayout tablebgLayout = new javax.swing.GroupLayout(tablebg);
+        tablebg.setLayout(tablebgLayout);
+        tablebgLayout.setHorizontalGroup(
+            tablebgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+        );
+        tablebgLayout.setVerticalGroup(
+            tablebgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFamilyNames)
-                            .addComponent(lblNames)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chckImpairedProfile)
-                            .addComponent(chckPetsProfile))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(chckPetsProfile)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblFamilyNames)
+                                .addComponent(lblNames))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(tablebg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lblNames)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblFamilyNames)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
+                .addComponent(lblNames)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFamilyNames)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tablebg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(94, 94, 94)
                 .addComponent(chckPetsProfile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chckImpairedProfile)
-                .addGap(48, 48, 48))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -145,6 +164,7 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lblFamilyNames;
     public javax.swing.JLabel lblNames;
-    public javax.swing.JTextPane txtReservationsProfile;
+    public javax.swing.JTable profileTable;
+    private javax.swing.JPanel tablebg;
     // End of variables declaration//GEN-END:variables
 }

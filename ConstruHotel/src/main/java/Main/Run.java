@@ -11,6 +11,7 @@ import Model.RoomData;
 import Model.RoomDataQuerys;
 import Model.User;
 import Model.UserQuerys;
+import View.AdminMenu;
 import View.MainMenu;
 import View.PrincipalPanel;
 import View.ReservePanel;
@@ -19,7 +20,7 @@ import View.RoomFloorDeluxe;
 import View.UserLogIn;
 import View.UserProfile;
 import View.UserRegister;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatLightOwlIJTheme;
 
 /**
  *
@@ -29,7 +30,8 @@ public class Run {
     
     public static void main(String[] args) {
      //set Nimbus Look and Feel
-     FlatMaterialLighterIJTheme.setup();
+     FlatLightOwlIJTheme.setup();
+     
      
      User user = new User();
      UserQuerys userQuerys = new UserQuerys();
@@ -45,6 +47,7 @@ public class Run {
      UserLogIn userLogIn = new UserLogIn();
      UserProfile userProfile = new UserProfile();
      UserRegister userRegister = new UserRegister();
+     AdminMenu adminMenu = new AdminMenu();
      ControllerHotel controllerHotel = new ControllerHotel(
         user, 
         userQuerys,
@@ -59,7 +62,8 @@ public class Run {
         roomFloorDeluxe,                 
         userLogIn, 
         userProfile, 
-        userRegister);              
+        userRegister,
+        adminMenu);              
     
     controllerHotel.startMainMenu();
     }

@@ -4,6 +4,7 @@
  */
 package View;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatLightOwlIJTheme;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.sql.Date;
@@ -20,6 +21,7 @@ public class ReservePanel extends javax.swing.JPanel {
      * Creates new form ReservePanel
      */
     public ReservePanel() {
+        FlatLightOwlIJTheme.setup();
         initComponents();
         initStyles();      
     }

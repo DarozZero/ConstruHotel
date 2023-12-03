@@ -4,8 +4,6 @@
  */
 package Model;
 
-import java.util.Date;
-
 /**
  *
  * @author Daroz
@@ -63,6 +61,18 @@ public class ReservationData {
     }
 
     public void setFee(float fee) {
+        this.fee = fee;
+    }
+
+    public ReservationData() {
+    }
+
+    public ReservationData(int reservationID, String userName, String roomID, java.sql.Date startDate, java.sql.Date endDate, float fee) {
+        this.reservationID = reservationID;
+        this.userName = userName;
+        this.roomID = roomID;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.fee = fee;
     }
     
